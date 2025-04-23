@@ -23,4 +23,5 @@ public class Product {
     private String product_unit;
     private int quantity;
     private int price;
+    private String picture;
 }
