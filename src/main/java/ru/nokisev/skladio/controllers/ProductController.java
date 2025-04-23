@@ -1,6 +1,7 @@
 package ru.nokisev.skladio.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nokisev.skladio.models.Product;
 import ru.nokisev.skladio.repositories.ProductRepository;
@@ -24,4 +25,19 @@ public class ProductController {
     public Product createProduct(@RequestBody Product product) {
         return productRepository.save(product);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+
+        if (!productRepository.existsById(id)) return ResponseEntity.notFound().build();
+        product.setId(id);
+        Product updatedProduct = productRepository.save(product);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productRepository.deleteById(id);
+    }
+
 }
