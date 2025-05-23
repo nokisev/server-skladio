@@ -1,4 +1,14 @@
 spring:
+  profiles:
+    active: "dev"
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "dev"
   jpa:
     database: POSTGRESQL
     show-sql: true
