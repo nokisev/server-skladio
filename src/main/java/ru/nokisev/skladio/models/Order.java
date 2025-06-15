@@ -24,15 +24,16 @@ public class Order {
 
     private String orderNumber = "ORD-" + orderDate.getYear() + "-" + id;
 
+    private String customer;
+
+    private String email;
+
+    private String address;
+
     @Enumerated(EnumType.STRING)
     private OrderStatus status = OrderStatus.CONFIRMED;
 
     private LocalDateTime expectedDeliveryDate = orderDate.plusDays(30);
-
-    private String customerId = "1";
-
-    @ManyToOne
-    private Supplier supplier;
 
     private int totalAmount;
 
@@ -41,7 +42,6 @@ public class Order {
     @OneToMany
     private List<OrderItem> orderItems;
 
-    @OneToOne
-    private Shipment shipment;
-
+    @ManyToOne
+    private User user;
 }

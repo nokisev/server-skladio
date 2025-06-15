@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.nokisev.skladio.models.enums.Tag;
+
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -25,4 +28,6 @@ public class Product {
     @Column(nullable = false)
     private int price;
     private String picture;
+    @Enumerated(EnumType.STRING)
+    private List<Tag> tags;
 }

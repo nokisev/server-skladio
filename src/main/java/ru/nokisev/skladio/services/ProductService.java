@@ -65,6 +65,9 @@ public class ProductService {
         if (product.getPicture() != null) {
             oldProduct.setPicture(product.getPicture());
         }
+        if (product.getTags() != null) {
+            oldProduct.setTags(product.getTags());
+        }
 
         return productRepository.save(oldProduct);
     }
